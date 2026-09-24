@@ -1,56 +1,73 @@
-// Variáveis globais para controle do carrinho/modal
-let setorSelecionado = '';
-let precoUnitario = 0;
+// Função para trocar de tela/aba
+function mostrarAba(idAba, event) {
+    if (event) {
+        event.preventDefault();
+    }
 
-// Função para abrir o modal de compra com os dados do setor escolhido
-function selecionarIngresso(setor, preco) {
-    setorSelecionado = setor;
+    // Esconde todas as abas
+    const abas = document.querySelectorAll('.aba-conteudo');
+    abas.forEach(aba => {
+        aba.classList.remove('active');
+    });
+
+    // Mostra apenas a aba clicada
+    const abaSelecionada = document.getElementById(idAba);
+    if (abaSelecionada) {
+        abaSelecionada.classList.add('active');
+    }
+
+    // Atualiza a cor de destaque do menu superior
+    const linksNav = document.querySelectorAll('.nav-link');
+    linksNav.forEach(link => {
+        link.classList.remove('active');
+    });
+
+    // Rola para o topo da tela suavemente
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Variáveis do Modal de Compra
+let precoUnitario = 0;
+let ingressoNome = "";
+
+function selecionarIngresso(nome, preco) {
+    ingressoNome = nome;
     precoUnitario = preco;
 
-    document.getElementById('modal-titulo').innerText = `Ingresso: ${setor}`;
-    document.getElementById('modal-descricao').innerText = `Garanta sua vaga no setor ${setor} no topo do Martinelli.`;
+    document.getElementById('modal-titulo').innerText = `Ingresso: ${nome}`;
+    document.getElementById('modal-descricao').innerText = `Valor unitário: R$ ${preco},00`;
     document.getElementById('qtd').value = 1;
     
     atualizarTotal();
-    
-    const modal = document.getElementById('modal-compra');
-    modal.style.display = 'flex';
+    document.getElementById('modal-compra').style.display = 'flex';
 }
 
-// Função para fechar o modal
-function fecharModal() {
-    const modal = document.getElementById('modal-compra');
-    modal.style.display = 'none';
-}
-
-// Atualiza o valor total no modal ao mudar a quantidade
 function atualizarTotal() {
-    const quantidade = parseInt(document.getElementById('qtd').value) || 1;
-    const total = precoUnitario * quantidade;
-    
-    document.getElementById('valor-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    const qtd = parseInt(document.getElementById('qtd').value) || 1;
+    const total = precoUnitario * qtd;
+    document.getElementById('valor-total').innerText = `R$ ${total},00`;
 }
 
-// Processa o envio do formulário de compra
+function fecharModal() {
+    document.getElementById('modal-compra').style.display = 'none';
+}
+
 function confirmarCompra(event) {
     event.preventDefault();
-
     const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const quantidade = document.getElementById('qtd').value;
-    const total = precoUnitario * quantidade;
+    const qtd = document.getElementById('qtd').value;
+    const total = precoUnitario * qtd;
 
-    alert(`🎉 INGRESSO RESERVADO COM SUCESSO!\n\nNome: ${nome}\nE-mail: ${email}\nSetor: ${setorSelecionado}\nQuantidade: ${quantidade}\nTotal: R$ ${total.toFixed(2).replace('.', ',')}\n\nObrigado por garantir sua vaga no Bailando no Martinelli!`);
-
-    // Limpa o formulário e fecha o modal
-    document.getElementById('form-compra').reset();
+    alert(`🎉 Parabéns, ${nome}!\n\nSua compra de ${qtd}x (${ingressoNome}) no valor total de R$ ${total},00 foi realizada com sucesso!\n\nEnviamos a confirmação para o seu e-mail.`);
+    
     fecharModal();
+    document.getElementById('form-compra').reset();
 }
 
-// Fecha o modal caso o usuário clique fora da caixa de conteúdo
-window.onclick = function(event) {
+// Fechar modal ao clicar fora da caixa
+window.onclick = function(e) {
     const modal = document.getElementById('modal-compra');
-    if (event.target === modal) {
+    if (e.target === modal) {
         fecharModal();
     }
-};
+}
