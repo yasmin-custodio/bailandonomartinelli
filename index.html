@@ -17,57 +17,35 @@
         <div class="logo">BAILANDO NO <span>MARTINELLI</span></div>
         <nav>
             <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#lineup">Line-Up</a></li>
-                <li><a href="#vip">Atração Especial</a></li>
-                <li><a href="#ingressos">Ingressos</a></li>
-                <li><a href="#local">O Local</a></li>
+                <li><a href="#inicio" class="nav-link active" onclick="mostrarAba('inicio', event)">Início</a></li>
+                <li><a href="#lineup" class="nav-link" onclick="mostrarAba('lineup', event)">Line-Up</a></li>
+                <li><a href="#vip" class="nav-link" onclick="mostrarAba('vip', event)">Atração Especial</a></li>
+                <li><a href="#ingressos" class="nav-link" onclick="mostrarAba('ingressos', event)">Ingressos</a></li>
+                <li><a href="#local" class="nav-link" onclick="mostrarAba('local', event)">O Local</a></li>
             </ul>
         </nav>
-        <a href="#ingressos" class="btn-nav">Garantir Ingressos</a>
+        <a href="#ingressos" class="btn-nav" onclick="mostrarAba('ingressos', event)">Garantir Ingressos</a>
     </header>
 
-    <!-- HERO SECTION -->
-    <section id="inicio" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <span class="badge">14 DE NOVEMBRO DE 2026 • SP</span>
-            <h1>O MAIOR BAILE NAS ALTURAS DE SP</h1>
-            <p>Sinta a energia do funk no topo do Edifício Martinelli. Vista 360°, os maiores MCs do Brasil e uma resenha inesquecível.</p>
-            <div class="hero-btns">
-                <a href="#ingressos" class="btn-primary">Comprar Ingressos</a>
-                <a href="#lineup" class="btn-secondary">Ver Line-Up</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ATRAÇÃO ESPECIAL: MARTINELLI -->
-    <section id="vip" class="special-feature">
-        <div class="container feature-grid">
-            <div class="feature-text">
-                <span class="sub-title">PRESENÇA CONFIRMADA</span>
-                <h2>RESENHA VIP COM MARTINELLI ⚽</h2>
-                <p>O craque Martinelli estará no comando da área VIP! Garanta seu ingresso VIP ou Lounge para participar do <strong>Meet & Greet exclusivo</strong>, com espaço para fotos, autógrafos e bate-papo exclusivo no topo da cidade.</p>
-                <ul class="feature-list">
-                    <li>✓ Acesso exclusivo com bar dedicado</li>
-                    <li>✓ Sessão de fotos e autógrafos com Martinelli</li>
-                    <li>✓ Entrada expressa sem filas</li>
-                    <li>✓ Vista privilegiada para o palco principal</li>
-                </ul>
-            </div>
-            <div class="feature-card">
-                <div class="card-glass">
-                    <span class="card-tag">VIP EXCLUSIVE</span>
-                    <h3>ÁREA RESENHA</h3>
-                    <p>Convivência premium com os convidados do festival e atendimento diferenciado.</p>
+    <!-- TELA / ABA 1: INÍCIO (HERO) -->
+    <section id="inicio" class="aba-conteudo active">
+        <div class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="badge">14 DE NOVEMBRO DE 2026 • SP</span>
+                <h1>O MAIOR BAILE NAS ALTURAS DE SP</h1>
+                <p>Sinta a energia do funk no topo do Edifício Martinelli. Vista 360°, os maiores MCs do Brasil e uma resenha inesquecível.</p>
+                <div class="hero-btns">
+                    <a href="#ingressos" class="btn-primary" onclick="mostrarAba('ingressos', event)">Comprar Ingressos</a>
+                    <a href="#lineup" class="btn-secondary" onclick="mostrarAba('lineup', event)">Ver Line-Up</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- LINE-UP SECTION -->
-    <section id="lineup" class="lineup-section">
-        <div class="container">
+    <!-- TELA / ABA 2: LINE-UP -->
+    <section id="lineup" class="aba-conteudo">
+        <div class="container page-padding">
             <div class="section-header">
                 <h2>LINE-UP OFICIAL</h2>
                 <p>Os brabos do funk reunidos em um único palco</p>
@@ -131,9 +109,35 @@
         </div>
     </section>
 
-    <!-- INGRESSOS SECTION -->
-    <section id="ingressos" class="tickets-section">
-        <div class="container">
+    <!-- TELA / ABA 3: ATRAÇÃO ESPECIAL (MARTINELLI) -->
+    <section id="vip" class="aba-conteudo">
+        <div class="container page-padding feature-grid">
+            <div class="feature-text">
+                <span class="sub-title">PRESENÇA CONFIRMADA</span>
+                <h2>RESENHA VIP COM MARTINELLI ⚽</h2>
+                <p>O craque Martinelli estará no comando da área VIP! Garanta seu ingresso VIP ou Lounge para participar do <strong>Meet & Greet exclusivo</strong>, com espaço para fotos, autógrafos e bate-papo exclusivo no topo da cidade.</p>
+                <ul class="feature-list">
+                    <li>✓ Acesso exclusivo com bar dedicado</li>
+                    <li>✓ Sessão de fotos e autógrafos com Martinelli</li>
+                    <li>✓ Entrada expressa sem filas</li>
+                    <li>✓ Vista privileged para o palco principal</li>
+                </ul>
+                <br>
+                <a href="#ingressos" class="btn-primary" onclick="mostrarAba('ingressos', event)">Garantir Ingresso VIP</a>
+            </div>
+            <div class="feature-card">
+                <div class="card-glass">
+                    <span class="card-tag">VIP EXCLUSIVE</span>
+                    <h3>ÁREA RESENHA</h3>
+                    <p>Convivência premium com os convidados do festival e atendimento diferenciado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TELA / ABA 4: INGRESSOS -->
+    <section id="ingressos" class="aba-conteudo">
+        <div class="container page-padding">
             <div class="section-header">
                 <h2>SELECIONE SEU SETOR</h2>
                 <p>Escolha a experiência ideal para curtir o festival</p>
@@ -185,16 +189,16 @@
         </div>
     </section>
 
-    <!-- LOCALIZAÇÃO -->
-    <section id="local" class="location-section">
-        <div class="container location-grid">
+    <!-- TELA / ABA 5: LOCAL -->
+    <section id="local" class="aba-conteudo">
+        <div class="container page-padding location-grid">
             <div class="location-info">
                 <h2>O EDIFÍCIO MARTINELLI</h2>
                 <p>Primeiro arranha-céu da América Latina, o Martinelli é um marco da arquitetura paulistana. Localizado no coração histórico de São Paulo, seu terraço icônico será o cenário do maior baile das alturas.</p>
                 <div class="details">
-                    <p><strong>📍 Endereço:</strong> Rua São Bento, 405 - Centro Histórico, São Paulo - SP</p>
-                    <p><strong>🚆 Acesso:</strong> Metrô São Bento (Linha 1-Azul) ou Anhangabaú (Linha 3-Vermelha)</p>
-                    <p><strong>🔞 Classificação:</strong> 18 Anos (Obrigatória apresentação de RG)</p>
+                    <p><strong>Endereço:</strong> Rua São Bento, 405 - Centro Histórico, São Paulo - SP</p>
+                    <p><strong>Acesso:</strong> Metrô São Bento (Linha 1-Azul) ou Anhangabaú (Linha 3-Vermelha)</p>
+                    <p><strong>Classificação:</strong> 18 Anos (Obrigatória apresentação de RG)</p>
                 </div>
             </div>
         </div>
