@@ -521,3 +521,24 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* REGRA PARA ALTERNAR AS TELAS */
+.aba-conteudo {
+    display: none; /* Esconde todas por padrão */
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.aba-conteudo.active {
+    display: block; /* Mostra somente a tela ativa */
+}
+
+.page-padding {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    min-height: calc(100vh - 150px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
